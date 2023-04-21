@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MovieDemo</string>
+    <string name="movies">Movies</string>
+    <string name="loading">loading…</string>
+    <string name="book">Book</string>
+    <string name="movie_poster_image">Movie Poster Image</string>
+    <string name="reviews">Reviews</string>
+    <string name="cast">Cast</string>
+    <string name="similar">Similar</string>
 </resources>
