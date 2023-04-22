@@ -9,13 +9,15 @@ import com.gmacv.moviedemo.data.model.credits.CreditSingle
 import com.gmacv.moviedemo.data.model.movies.MovieSingle
 import com.gmacv.moviedemo.data.model.reviews.ReviewSingle
 import com.gmacv.moviedemo.data.repository.MainRepository
+import com.gmacv.moviedemo.util.NetworkHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
-    private val mainRepository: MainRepository
+    private val mainRepository: MainRepository,
+    private val networkHelper: NetworkHelper
 ) : ViewModel() {
 
     private val _detailMovies = MutableLiveData<MovieSingle>()
@@ -48,56 +50,64 @@ class DetailsViewModel @Inject constructor(
     private fun fetchMovieDetails(id: Int) {
         viewModelScope.launch {
             _detailMovies.postValue(MovieSingle(0, "", "", "")) //loading
-            mainRepository.getMovieDetails(id).let {
-                if (it.isSuccessful) {
-                    _detailMovies.postValue(it.body())
-                } else {
-                    _networkError.postValue(true)
-                    Log.e("Error API Movies Details", it.errorBody().toString())
+            if (networkHelper.isNetworkConnected()) {
+                mainRepository.getMovieDetails(id).let {
+                    if (it.isSuccessful) {
+                        _detailMovies.postValue(it.body())
+                    } else {
+                        _networkError.postValue(true)
+                        Log.e("Error API Movies Details", it.errorBody().toString())
+                    }
                 }
-            }
+            } else _networkError.postValue(true)
         }
     }
 
     private fun fetchMovieReviews(id: Int) {
         viewModelScope.launch {
             _reviewsMovies.postValue(arrayListOf()) //loading
-            mainRepository.getReviews(id).let {
-                if (it.isSuccessful) {
-                    _reviewsMovies.postValue(it.body()?.results ?: arrayListOf())
-                } else {
-                    _networkError.postValue(true)
-                    Log.e("Error API Movies Reviews", it.errorBody().toString())
+            if (networkHelper.isNetworkConnected()) {
+                mainRepository.getReviews(id).let {
+                    if (it.isSuccessful) {
+                        _reviewsMovies.postValue(it.body()?.results ?: arrayListOf())
+                    } else {
+                        _networkError.postValue(true)
+                        Log.e("Error API Movies Reviews", it.errorBody().toString())
+                    }
                 }
-            }
+            } else _networkError.postValue(true)
         }
     }
 
     private fun fetchMovieCredits(id: Int) {
         viewModelScope.launch {
             _creditsMovies.postValue(arrayListOf()) //loading
-            mainRepository.getCredits(id).let {
-                if (it.isSuccessful) {
-                    _creditsMovies.postValue(it.body()?.cast ?: arrayListOf())
-                } else {
-                    _networkError.postValue(true)
-                    Log.e("Error API Movies Credits", it.errorBody().toString())
+            if (networkHelper.isNetworkConnected()) {
+                mainRepository.getCredits(id).let {
+                    if (it.isSuccessful) {
+                        _creditsMovies.postValue(it.body()?.cast ?: arrayListOf())
+                    } else {
+                        _networkError.postValue(true)
+                        Log.e("Error API Movies Credits", it.errorBody().toString())
+                    }
                 }
-            }
+            } else _networkError.postValue(true)
         }
     }
 
     private fun fetchSimilarMovies(id: Int) {
         viewModelScope.launch {
             _similarMovies.postValue(arrayListOf()) //loading
-            mainRepository.getNowPlayingMovies().let {
-                if (it.isSuccessful) {
-                    _similarMovies.postValue(it.body()?.results ?: arrayListOf())
-                } else {
-                    _networkError.postValue(true)
-                    Log.e("Error API Movies Similar", it.errorBody().toString())
+            if (networkHelper.isNetworkConnected()) {
+                mainRepository.getNowPlayingMovies().let {
+                    if (it.isSuccessful) {
+                        _similarMovies.postValue(it.body()?.results ?: arrayListOf())
+                    } else {
+                        _networkError.postValue(true)
+                        Log.e("Error API Movies Similar", it.errorBody().toString())
+                    }
                 }
-            }
+            } else _networkError.postValue(true)
         }
     }
 }

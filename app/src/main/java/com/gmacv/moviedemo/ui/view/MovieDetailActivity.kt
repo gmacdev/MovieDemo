@@ -122,7 +122,7 @@ class MovieDetailActivity : AppCompatActivity(R.layout.activity_movie_details), 
     }
 
     private fun showSnackBarWithAction(message: String) {
-        val snack = Snackbar.make(binding.main, message, Snackbar.LENGTH_LONG)
+        val snack = Snackbar.make(binding.main, message, Snackbar.LENGTH_INDEFINITE)
         snack.setAction("Refresh") {
             detailViewModel.loadAllData(movieId)
         }

@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), OnClickInterface
                 try {
                     binding.shimmer.visibility = View.GONE
                     binding.shimmer.stopShimmer()
+                    binding.recyclerViewMovies.visibility = View.VISIBLE
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), OnClickInterface
     }
 
     private fun showSnackBarWithAction(message: String) {
-        val snack = Snackbar.make(binding.main, message, Snackbar.LENGTH_LONG)
+        val snack = Snackbar.make(binding.main, message, Snackbar.LENGTH_INDEFINITE)
         snack.setAction("Refresh") {
             mainViewModel.loadAllData()
         }
