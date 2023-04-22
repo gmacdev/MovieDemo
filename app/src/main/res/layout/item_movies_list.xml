@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
@@ -26,7 +27,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/photo"
                 android:layout_width="152dp"
-                android:layout_height="228dp"
+                android:layout_height="230dp"
                 android:layout_weight="0"
                 android:background="@color/cardview_dark_background"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,38 +56,70 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/releaseDate"
+                <LinearLayout
+                    android:id="@+id/releaseDateLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:gravity="start"
-                    android:maxLines="1"
-                    android:singleLine="false"
-                    android:text="@string/loading"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/rating"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/ratingLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/title" />
+                    app:layout_constraintTop_toBottomOf="@+id/title"
+                    tools:ignore="UseCompoundDrawables">
 
-                <TextView
-                    android:id="@+id/rating"
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="@string/release_date"
+                        android:src="@drawable/calendar" />
+
+                    <TextView
+                        android:id="@+id/releaseDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:maxLines="1"
+                        android:singleLine="false"
+                        android:text="@string/loading"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ratingLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
-                    android:gravity="start"
-                    android:maxLines="1"
-                    android:singleLine="false"
-                    android:text="@string/loading"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
                     app:layout_constraintBottom_toTopOf="@+id/bookButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/releaseDate" />
+                    app:layout_constraintTop_toBottomOf="@+id/releaseDateLayout"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="@string/release_date"
+                        android:src="@drawable/star" />
+
+                    <TextView
+                        android:id="@+id/rating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:maxLines="1"
+                        android:singleLine="false"
+                        android:text="@string/loading"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/bookButton"

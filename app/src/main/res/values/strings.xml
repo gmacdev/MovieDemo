@@ -7,4 +7,5 @@
     <string name="reviews">Reviews</string>
     <string name="cast">Cast</string>
     <string name="similar">Similar</string>
+    <string name="release_date">Release Date</string>
 </resources>
