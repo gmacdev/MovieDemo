@@ -39,22 +39,4 @@ class ApplicationModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): Apis = retrofit.create(Apis::class.java)
 
-//    @Provides
-//    @Singleton
-//    fun provideOkHttpClient() : OkHttpClient {
-//        val builder = OkHttpClient.Builder()
-//        return builder
-//            .addInterceptor(HttpLoggingInterceptor())
-//            .addInterceptor { chain ->
-//                val newRequest = chain.request().newBuilder()
-//                    .addHeader(
-//                        "Authorization:Bearer",
-//                        "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NzAyM2M0YjdkYTE5ODUxMjk1OGM5YzU1OGM1ZjQzMSIsInN1YiI6IjY0NDIyZTY1YjNmNmY1MDU1YTlkY2RkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xiYfSLgAsQ5B4fMNyDo2KGNhDclO3BFx3Kr0sLr_R00"
-//                    )
-//                    .build()
-//                chain.proceed(newRequest)
-//            }
-//            .build()
-//    }
-
 }

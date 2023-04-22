@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,26 +36,32 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), OnClickInterface
         binding.recyclerViewMovies.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.recyclerViewMovies.adapter = nowPlayingMoviesAdapter
+
+        binding.main.setOnRefreshListener {
+            showShimmer()
+            mainViewModel.loadAllData()
+            binding.main.isRefreshing = false
+        }
     }
 
     private fun setupObserver() {
         mainViewModel.nowPlayingMovies.observe(this) {
-            if (it.isNullOrEmpty())
-//                showShimmerOnNowPlayingMovies()
+            if (it.isNullOrEmpty()) {
+                showShimmer()
                 Log.e("Empty List", "MoviesList")
-            else {
-//                hideShimmerOnNowPlayingMovies()
+            } else {
+                hideShimmer()
                 renderNowPlayingMovies(it)
             }
         }
         mainViewModel.networkErrorNowPlayingMovies.observe(this) {
             if (it == true) {
-//                try {
-//                    binding.shimmer.visibility = View.GONE
-//                    binding.shimmer.stopShimmer()
-//                } catch (e: Exception) {
-//                    e.printStackTrace()
-//                }
+                try {
+                    binding.shimmer.visibility = View.GONE
+                    binding.shimmer.stopShimmer()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
                 showSnackBarWithAction("Network Error")
             }
         }
@@ -79,5 +86,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), OnClickInterface
             mainViewModel.loadAllData()
         }
         snack.show()
+    }
+
+    private fun showShimmer() {
+        binding.recyclerViewMovies.visibility = View.INVISIBLE
+        binding.shimmer.visibility = View.VISIBLE
+        binding.shimmer.startShimmer()
+    }
+
+    private fun hideShimmer() {
+        binding.shimmer.stopShimmer()
+        binding.shimmer.visibility = View.GONE
+        binding.recyclerViewMovies.visibility = View.VISIBLE
     }
 }

@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.gmacv.moviedemo.data.model.movies.MovieSingle
 import com.gmacv.moviedemo.data.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -35,6 +36,7 @@ class MainViewModel @Inject constructor(
     private fun fetchNowPlayingMovies() {
         viewModelScope.launch {
             _nowPlayingMovies.postValue(arrayListOf()) //loading
+            delay(1000) // so we can enjoy shimmer loading XD
             mainRepository.getNowPlayingMovies().let {
                 if (it.isSuccessful) {
                     _nowPlayingMovies.postValue(it.body()?.results ?: arrayListOf())
