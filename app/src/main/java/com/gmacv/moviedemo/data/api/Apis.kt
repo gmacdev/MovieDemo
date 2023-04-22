@@ -1,6 +1,7 @@
 package com.gmacv.moviedemo.data.api
 
 import com.gmacv.moviedemo.data.model.credits.Credits
+import com.gmacv.moviedemo.data.model.movies.MovieSingle
 import com.gmacv.moviedemo.data.model.movies.Movies
 import com.gmacv.moviedemo.data.model.reviews.Reviews
 import retrofit2.Response
@@ -13,7 +14,7 @@ interface Apis {
     suspend fun getNowPlayingMovies(): Response<Movies>
 
     @GET("movie/{movie_id}?api_key=47023c4b7da198512958c9c558c5f431")
-    suspend fun getMovieDetails(@Path("movie_id") id: Int): Response<Movies>
+    suspend fun getMovieDetails(@Path("movie_id") id: Int): Response<MovieSingle>
 
     @GET("movie/{movie_id}/reviews?api_key=47023c4b7da198512958c9c558c5f431")
     suspend fun getReviews(@Path("movie_id") id: Int): Response<Reviews>

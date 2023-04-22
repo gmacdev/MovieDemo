@@ -29,6 +29,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity android:name="com.gmacv.moviedemo.ui.view.MovieDetailActivity" />
     </application>
 
 </manifest>

@@ -6,22 +6,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gmacv.moviedemo.R
 import com.gmacv.moviedemo.data.model.movies.MovieSingle
-import com.gmacv.moviedemo.databinding.ItemMoviesListBinding
+import com.gmacv.moviedemo.databinding.ItemSimilarBinding
 import com.gmacv.moviedemo.ui.inter.OnClickInterface
 import com.gmacv.moviedemo.util.Reuse
 
-class NowPlayingMoviesAdapter(
+class SimilarMoviesAdapter(
     private val list: ArrayList<MovieSingle>,
     private val onClickInterface: OnClickInterface
-) : RecyclerView.Adapter<NowPlayingMoviesAdapter.DataViewHolder>() {
+) : RecyclerView.Adapter<SimilarMoviesAdapter.DataViewHolder>() {
 
-    class DataViewHolder(private val binding: ItemMoviesListBinding) :
+    class DataViewHolder(private val binding: ItemSimilarBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movieSingle: MovieSingle, onClickInterface: OnClickInterface) {
             binding.title.text = movieSingle.title
-            binding.releaseDate.text = movieSingle.release_date
-            val rating = Reuse.roundTheNumber(movieSingle.vote_average) + " / 10"
-            binding.rating.text = rating
             val posterUrl = Reuse.getImagePrefixUrl() + movieSingle.poster_path
             Glide.with(binding.photo.context)
                 .load(posterUrl)
@@ -29,10 +26,10 @@ class NowPlayingMoviesAdapter(
                 .centerCrop()
                 .error(R.drawable.placeholder_image)
                 .into(binding.photo)
-            binding.cardView.setOnClickListener {
+            binding.photo.setOnClickListener {
                 onClickInterface.onClick(movieSingle.id)
             }
-            binding.bookButton.setOnClickListener {
+            binding.title.setOnClickListener {
                 onClickInterface.onClick(movieSingle.id)
             }
         }
@@ -40,7 +37,7 @@ class NowPlayingMoviesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         return DataViewHolder(
-            ItemMoviesListBinding.inflate(
+            ItemSimilarBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

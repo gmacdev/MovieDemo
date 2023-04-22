@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
-    android:background="?android:attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true">
 
@@ -12,6 +11,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/black"
         app:cardCornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,13 +83,13 @@
                     android:text="@string/loading"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/materialButton"
+                    app:layout_constraintBottom_toTopOf="@+id/bookButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/releaseDate" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/materialButton"
+                    android:id="@+id/bookButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/book"
