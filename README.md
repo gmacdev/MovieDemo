@@ -35,8 +35,8 @@ A demo project to showcase a top overview of movies using The Movie Database API
 
 **Additional Features**: Swipe Down to Refresh on the Main Screen.
 
-## Video:
-<video src="https://i.imgur.com/kqbb5vI.mp4"></video>
+## Screencast:
+https://user-images.githubusercontent.com/24245103/236174268-aad8e364-d1d8-4456-a449-df6597678207.mp4
 
 ## ScreenShots:
 ![](https://github.com/gmacdev/MovieDemo/blob/master/screenshot1.jpg)
