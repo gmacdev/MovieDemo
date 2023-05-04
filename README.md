@@ -40,6 +40,6 @@ A demo project to showcase a top overview of movies using The Movie Database API
 
 ![](https://github.com/gmacdev/MovieDemo/blob/master/screenshot2.jpg)
 
-![](https://github.com/gmacdev/MovieDemo/blob/master/screenshot3.jpg)
+![](https://github.com/gmacdev/MovieDemo/blob/master/Screenshot3.jpg)
 
-![](https://github.com/gmacdev/MovieDemo/blob/master/screenshot4.jpg)
+![](https://github.com/gmacdev/MovieDemo/blob/master/Screenshot4.jpg)
