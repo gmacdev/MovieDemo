@@ -37,12 +37,3 @@ A demo project to showcase a top overview of movies using The Movie Database API
 
 ## Screencast:
 https://user-images.githubusercontent.com/24245103/236174268-aad8e364-d1d8-4456-a449-df6597678207.mp4
-
-## ScreenShots:
-![](https://github.com/gmacdev/MovieDemo/blob/master/screenshot1.jpg)
-
-![](https://github.com/gmacdev/MovieDemo/blob/master/screenshot2.jpg)
-
-![](https://github.com/gmacdev/MovieDemo/blob/master/Screenshot3.jpg)
-
-![](https://github.com/gmacdev/MovieDemo/blob/master/Screenshot4.jpg)
